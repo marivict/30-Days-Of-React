@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>30 Days Of React Challenge</title>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      var rootElement = document.querySelector('.root')
+      const header = (
+        <header style={{border: '2px solid orange', color: 'black', fontSize:'20px'}}>
+          <h1>Welcome to 30 Days Of React</h1>
+          <h2>Getting Started React</h2>
+          <h3>JavaScript Library</h3>
+          <p>Asabeneh Yetayeh</p>
+          <small>Oct 2, 2020</small>
+        </header>
+      )
+
+      var styles = {background:'red', color: 'white'}
+
+      const main = (
+            <main>
+                <p>Prerequisite to get started react.js:</p>
+                <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                </ul>
+        </main>
+)
+
+
+
+const footer = (
+  <footer style={styles}>
+    <p>Copyright 2020</p>
+  </footer>
+)
+
+var app = (
+    <div>
+        {header}
+        {main}
+        {footer}    
+    </div>
+)
+      ReactDOM.render(app, rootElement)
+    </script>
+  </body>
+</html>
