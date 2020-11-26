@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './flags/background'
-
+import Container from './container/container';
+import {countriesData} from './data/countries'
 ReactDOM.render(
   <>
-    <App />
+    <Container country={countriesData}></Container>
   </>,
   document.getElementById('root')
 );
