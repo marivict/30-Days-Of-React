@@ -16,6 +16,7 @@ class CicleLife extends React.Component {
         // Agregar Event Listener
         console.log("Lifecycle ComponentDidMount()", this.state.foo)
         this.setState({foo: !this.state.foo})
+        
     }
 
     render(){
