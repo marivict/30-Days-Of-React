@@ -2,15 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Components
-import Request from './httpRequest'
-import Movie from './movie'
-import MovieAxios from './movieAxios'
+import App from './app'
 
 
 
   ReactDOM.render(
     <>
-      <MovieAxios />
+      <App />
     </>,
     document.getElementById('root')
   );
