@@ -1,42 +1,30 @@
 import React,{Component} from 'react'
-import CatsMetrics from './cats'
+import Header from './header'
+import './css/style.css'
+
 
 class App extends Component {
-  constructor(){
-    super()
-    
-  }
+  
   state ={
-    breeds:[]
+    breeds:[],
+    loading: true
   }
+
   componentDidMount () {
     const url = 'https://api.thecatapi.com/v1/breeds' 
     fetch(url)
     .then((res) => (res.json()))
-    .then(breeds => this.setState({breeds}))
+    .then(breeds => this.setState({breeds, loading:false}))
   }
 
-  
-  calculateCatWeight = () =>{
-    let cache = 0
-    let i = 0
-
-    {this.state.breeds.map(breed => {
-      let weightcat = breed.weight.metric.split("-").map(item =>(parseInt(item, 10)))
-      let mediaweightcat = weightcat.reduce((a,b) => a + b)/weightcat.length
-
-      cache =+ mediaweightcat
-      console.log("total",cache)
-      
-      return (<p>{mediaweightcat}</p>)
-      
-    })}
-  }
   render() {
+    const {breeds} = this.state
+    if(this.state.loading){
+      return(<div className="loading"><h1>Loading</h1></div>)
+    }
     return (
       <div>
-        <h1>Cats</h1>
-          {this.calculateCatWeight()}
+        <Header breeds={breeds} />        
       </div>
     )
   }
