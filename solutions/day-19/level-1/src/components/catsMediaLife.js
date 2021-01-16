@@ -10,7 +10,6 @@ const CatsMediaLife= ({breeds}) => {
   return(
     <>
       {totalLife.toFixed(1)}
-      
     </>
   )
   
