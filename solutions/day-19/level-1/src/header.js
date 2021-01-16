@@ -9,7 +9,7 @@ const Header = ({breeds}) => {
             <h1>30 days of React</h1>
             <h2>Cats Paradise</h2>
             <p>There are {breeds.length} cats breeds</p>
-            <p className="flex-alignment">On Average a cat can weight <span className="heading-gray"><span><CatsMediaWeight breeds={breeds} /></span></span>Kg and live <span className="heading-gray"><span><CatsMediaLife breeds={breeds} /></span></span> years </p>
+            <p className="header-feature">On Average a cat can weight <span className="header-feature-cat"><span><CatsMediaWeight breeds={breeds} /></span></span>Kg and live <span className="header-feature-cat"><span><CatsMediaLife breeds={breeds} /></span></span> years </p>
         </header>
     )
 }

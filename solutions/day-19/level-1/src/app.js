@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import Header from './header'
 import Cats from './components/cats'
+import Loader from './components/loader'
 import './css/style.css'
 
 
@@ -21,7 +22,7 @@ class App extends Component {
   render() {
     const {breeds} = this.state
     if(this.state.loading){
-      return(<div className="loading"><h1>Loading</h1></div>)
+      return(<Loader />)
     }
 
     const catsBreeds = breeds.map(breed=>{
@@ -32,7 +33,7 @@ class App extends Component {
     return (
       <div>
         <Header breeds={breeds} />   
-        <main>{catsBreeds}  </main>  
+        <main>{catsBreeds}</main>     
       </div>
     )
   }
