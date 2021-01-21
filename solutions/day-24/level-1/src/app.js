@@ -1,29 +1,32 @@
 import React,{useState, useEffect} from 'react'
-import Header from './header'
+import Header from './components/header'
 import Country from './components/country'
+import Search from './components/search'
 import './css/style.css'
 
 
 const App = () => {
-  const [countrys, setCountrys] = useState([])
+  const [countries, setCountries] = useState([])
 
   useEffect(() =>{
     const API = 'https://restcountries.eu/rest/v2/all'
     fetch(API)
     .then(res => res.json())
-    .then(countrys => {setCountrys(countrys)})
+    .then(countries => {setCountries(countries)})
   }, [])
 
-  const countryroad = countrys.map(country =>{
+  const countryList = countries.map(country =>{
     return <Country country={country} />
   })
   return (
-    <div>   
-       {countryroad}
+    <>
+    <Header country={countries} />
+    <Search />
+    <div className="country">   
+       {countryList}
     </div>
+    </>
   )
 }
-
-
 
 export default App 
