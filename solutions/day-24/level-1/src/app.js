@@ -15,16 +15,12 @@ const App = () => {
     .then(countries => {setCountries(countries)})
   }, [])
 
-  const countryList = countries.map(country =>{
-    return <Country country={country} />
-  })
+ 
   return (
     <>
     <Header country={countries} />
     <Search />
-    <div className="country">   
-       {countryList}
-    </div>
+    
     </>
   )
 }
