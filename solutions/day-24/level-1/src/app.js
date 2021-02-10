@@ -34,20 +34,12 @@ const App = () => {
     }
   }, [search])
 
-  const countryList = countries.status === 404 ?<PageNotFound /> : countries.map(country =>{
-    return <Country country={country} />
-  })
-
+ 
   return (
     <>
-    <Header search={search} country={countries} />
-    <Search search={search} setSearch={setSearch} />
-    <div className="country">   
-       {countryList}
-    </div>
-    <div>
-      <Wrapper countries={countries} />
-    </div>
+    <Header country={countries} />
+    <Search />
+    
     </>
   )
 }
