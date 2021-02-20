@@ -1,40 +1,21 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Country from './country'
 
-const Search = () => {
+const Search = ({search}) => {
 
-const [valueSearch, setValue] =useState('')
-const [countries, setCountries] = useState([])
+  const [valueSearch, setValue] = useState('')
 
   const handleInput = (e) => {
     const query = e.target.value
     setValue(query)
+    search(valueSearch)
+    console.log(valueSearch)
   }
-
-  const fetchSearch = () => {
-    
-
-    useEffect(() =>{
-      const API = 'https://restcountries.eu/rest/v2/all'
-      fetch(API)
-      .then(res => res.json())
-      .then(countries => {setCountries(countries)})
-    }, [])
-
-  }
-
-  const countryList = countries.map(country =>{
-    return <Country country={country} />
-  })
-
   return(
       <div className="search-container">
-          <input className="search" type="text" onChange={handleInput} placeholder="Search countries by name, city and language" />
-          
-          <div className="country">  
-              {countryList}
-          </div>
+          <input className="search" type="text" value={valueSearch} onChange={handleInput} placeholder="Search countries by name, city and language" />
       </div>
+
   )
 }
 export default Search
