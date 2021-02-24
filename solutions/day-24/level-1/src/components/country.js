@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Country = ({country}) => {
-    console.log(country)
     const languages = country.languages.map(language => (language.name)).join(',')
 
     const currencies = country.currencies.map(currency =>(currency.name)).join(',')
