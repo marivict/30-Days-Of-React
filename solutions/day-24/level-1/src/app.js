@@ -7,6 +7,7 @@ import Wrapper from './components/stadistics/wrapper'
 import Loader from './components/Loader/loader'
 import Population from './components/stadistics/Population'
 import Languages from './components/stadistics/Languages'
+import Footer from './components/footer'
 import './css/style.css'
 
 
@@ -39,27 +40,19 @@ const App = () => {
 
   return (
     <>
-      <Header 
-      country={countries}  
-      search={searchValule => setSearch(searchValule)}/>
-      
-      <Search 
-      search={searchValule => 
-      setSearch(searchValule)} />
-      {load ? 
-        <Loader />
+      <Header country={countries} />
+      <Search search={valueSearch => setSearch(valueSearch)} />
+      {load ?
+      <Loader /> 
       :
       <div>
-          <div className="country">  
-            {countryList}
-          </div>
-          <Wrapper 
-          countries={countries} 
-          Topic={Population} /> 
-          {/* <Wrapper countries={countries} Topic={Languages} /> */}
+        <div className="country">  
+          {countryList}
         </div>
+      </div>
     }
-    
+    <Wrapper Topic={Population} countries={countries}/>
+    <Footer />
     </>
   )
 }

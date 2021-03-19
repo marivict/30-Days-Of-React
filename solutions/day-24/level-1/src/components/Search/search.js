@@ -5,6 +5,8 @@ const Search = ({search}) => {
 
   const [valueSearch, setValue] = useState('')
 
+  
+
   const handleInput = (e) => {
     const query = e.target.value
     setValue(query)

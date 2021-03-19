@@ -173,6 +173,7 @@ progress[value]::-webkit-progress-value {
     background-color: orange;
     border-radius: 3px;
 }
+<<<<<<< HEAD
 
 /* LOADER */
 
@@ -256,3 +257,21 @@ progress[value]::-webkit-progress-value {
     }
   }
   
+=======
+/* FOOTER */
+
+footer {
+    background-color: #eee;
+    padding:10px 20px 10px;
+    text-align:center
+}
+
+footer h3 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 18px;
+}
+>>>>>>> cc07470c1603137e26ccd666dc3cef849ce8e55a
