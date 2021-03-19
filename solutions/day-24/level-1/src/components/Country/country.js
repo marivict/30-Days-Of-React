@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Country = ({country}) => {
-    console.log(country)
     const languages = country.languages.map(language => (language.name)).join(',')
 
     const currencies = country.currencies.map(currency =>(currency.name)).join(',')
     return(
+        <>
         <div className='card-country' key={country.name}>
             <div className="card-country-wrapper">
                 <div className="card-country-flag">
@@ -22,6 +22,7 @@ const Country = ({country}) => {
             </div>
             
         </div>
+        </>
     )
 }
 
