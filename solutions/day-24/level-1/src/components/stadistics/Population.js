@@ -5,26 +5,50 @@ import Stadistics from './Stadistics'
 
 const Population = ({countries}) =>{
 
-// Add all the population
-  const totalPopulation = countries.map((country) => {
-     return country.population
+  // Get total Population
+  const getTotalPopulationSum = countries.map((country) => {
+      return country.population
   }).reduce((acumulator, country)=>{
         return acumulator + country
   })
 
-//  Reduce the countries to 10
-  const graphlistPopulation = countries.slice(0, 10).map((country) => {
-     return <Stadistics name={country.name} population={country.population} total={totalPopulation}/>
+  const populationListSorted = () => {
+    
+  const arrayCountry = []
+
+  //Add the countries inside an array
+  countries.map(country => {
+    arrayCountry.push(country)
   })
 
-//  Sort the countries from highest to lower
-  const sortedPopulation = graphlistPopulation.sort((a,b)=>{
-      return b - a
+  //  Sort the countries from highest to lower
+  const compare = (a, b) =>{
+    const populationA = a.population
+    const populationB = b.population
+    let comparison = 0
+    if (populationA < populationB) {
+      comparison = 1
+    }else if(populationA > populationB){
+      comparison = -1
+    }
+    return comparison 
+  }
+
+    const sortedArray = arrayCountry.sort(compare)
+    return sortedArray
+  }
+
+//  Reduce the countries to 10
+  const graphlistPopulation = populationListSorted().slice(0, 10).map((country) => {
+     return <Stadistics 
+              name={country.name} 
+              population={country.population} 
+              total={getTotalPopulationSum}/>
   })
 
   return( 
         <>
-          <Stadistics name='World' population={totalPopulation} total={totalPopulation} />
+          <Stadistics name='World' population={getTotalPopulationSum} total={getTotalPopulationSum} />
           {graphlistPopulation}
         </>
   )

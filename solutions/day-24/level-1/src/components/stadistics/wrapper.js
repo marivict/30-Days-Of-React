@@ -1,11 +1,7 @@
 import React from 'react'
-import Population from './Population'
-import Stadistics from './Stadistics'
-import Menu from './Menu'
+import Menu from '../Menu/Menu'
 
 const Wrapper = ({Topic, countries}) => {
-
-
     return(
         <div className='stadistics'>
             <div className='stadistics-container'>
