@@ -13,6 +13,7 @@ const Search = ({search}) => {
   return(
       <div className="search-container">
           <input className="search" type="text" value={valueSearch} onChange={handleInput} placeholder="Search countries by name, city and language" />
+          <p className='idGraph'><a href='#graph'>Graph</a></p>
       </div>
 
   )
