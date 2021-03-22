@@ -39,8 +39,9 @@ const Population = ({countries}) =>{
   }
 
 //  Reduce the countries to 10
-  const graphlistPopulation = populationListSorted().slice(0, 10).map((country) => {
+  const populationList = populationListSorted().slice(0, 10).map((country) => {
      return <Stadistics 
+              key={country.name}
               name={country.name} 
               population={country.population} 
               total={getTotalPopulationSum}/>
@@ -49,7 +50,7 @@ const Population = ({countries}) =>{
   return( 
         <>
           <Stadistics name='World' population={getTotalPopulationSum} total={getTotalPopulationSum} />
-          {graphlistPopulation}
+          {populationList}
         </>
   )
 }

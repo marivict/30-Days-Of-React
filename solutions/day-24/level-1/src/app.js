@@ -5,8 +5,6 @@ import Search from './components/Search/search'
 import PageNotFound from './components/notFound'
 import Wrapper from './components/stadistics/wrapper'
 import Loader from './components/Loader/loader'
-import Population from './components/stadistics/Population'
-import Languages from './components/stadistics/Languages'
 import Footer from './components/footer'
 import './css/style.css'
 
@@ -35,7 +33,7 @@ const App = () => {
   }
   
   const countryList = countries.map(country =>{
-    return <Country country={country} />
+    return <Country key={country.name} country={country} />
   })
 
   return (
@@ -49,9 +47,11 @@ const App = () => {
         <div className="country">  
           {countryList}
         </div>
+        <Wrapper countries={countries}/>
       </div>
+      
     }
-    <Wrapper Topic={Population} countries={countries}/>
+    
     <Footer />
     </>
   )

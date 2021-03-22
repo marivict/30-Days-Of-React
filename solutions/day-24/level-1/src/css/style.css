@@ -255,6 +255,36 @@ progress[value]::-webkit-progress-value {
       opacity: 0;
     }
   }
+
+/* BUTTON */
+
+button {
+  border-radius: 10px;
+  background-color:orange;
+  color:rgb(77, 77, 77);
+  font-size:20px;
+  padding:15px 35px;
+  text-transform:uppercase;
+  margin-right:15px;
+  border: none;
+  font-weight:bold;
+  outline:none;
+  cursor: pointer;
+}
+
+.stadistics-buttons {
+  text-align:center;
+}
+
+.stadistic-button-description {
+  font-size: 20px;
+  font-weight:bold;
+  margin: 20px auto;
+}
+
+.idGraph {
+  text-align:center;
+}
   
 /* FOOTER */
 
