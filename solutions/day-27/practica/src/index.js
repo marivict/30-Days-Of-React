@@ -10,7 +10,7 @@ import Example from './example'
 
   ReactDOM.render(
     <>
-      <Example /> 
+      <App /> 
     </>,
     document.getElementById('root')
   );

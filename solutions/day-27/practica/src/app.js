@@ -1,66 +1,26 @@
-import React,{useState, useContext} from 'react'
-
-
-// Home Component
-
-const MyContext = React.createContext()
-// MyContext se vuelve un objeto 
-// Ahor puedes acceder a {Provider y Consumer}
-
-
-const Nieto = () => {
-  //Forma Tradicional
-  // <MyContext.Consumer>
-  //   {(context) => (
-  //     <div>
-  //       <h1>Nieto{context.counter}</h1>
-  //       <button onClick={context.handleClick}>Nieto Dispatcher</button>
-  //     </div>
-  //   )}
-  // </MyContext.Consumer>
-  const context = useContext(MyContext)
-  return(
-    <div>
-      <h1>Nieto{context.counter}</h1>
-      <button onClick={context.handleClick}>Nieto Dispatcher</button>
-  </div>
-  )
-}
-
-const Hijo = () => {
-  return(
-    <div>
-      <h1>Hijo</h1>
-      <Nieto />
-    </div>
-  )
-}
-
+import React,{useRef} from 'react'
 
 
 const App = () =>  {
+  const ref = useRef(null)
+  const onClick = () => {
+    /*let value = ref.current.value
+    alert(value)*/
+    /* let content = ref.current.textContent
+       alert(content)*/
 
- 
-  const [counter, setCounter] = useState(0)
-
-    const handleClick = () => {
-        setCounter(counter + 2)
-    }
+    ref.current.style.backgroundColor= "#61dbfb"
+    ref.current.style.padding = '50px'
+    ref.current.style.textAlign = 'center'
+    ref.current.style.color = '#fff'
+  }
 
     return(
-      <MyContext.Provider value={{
-        counter, 
-        handleClick
-      }}>
-        <div>
-            <h1>{counter}</h1>
-            <button onClick={handleClick}>Aumentarx2</button>
-            <Hijo />
-        </div>
-      </MyContext.Provider>
+      <div className='App'>
+        <h1 ref={ref}>Apple's Tree</h1>
+        <button onClick={onClick}>Aplly styles</button>
+      </div>
     )
 }
-
-
 
 export default App 
