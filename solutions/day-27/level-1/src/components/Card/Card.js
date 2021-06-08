@@ -1,47 +1,33 @@
-import React,{useRef, useState} from 'react'
+import React,{useRef, useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboard } from '@fortawesome/free-solid-svg-icons'
 import {CardContainer, Label,  Icon} from './styles/cardStyle'
-const Card = ({num}) => {
-
-    const copy = useRef(null)
-    const [copied, setCopied] =useState(false)
-    const [copiedClass, setCopiedClass] = useState('copy')
-    // Function to generate Hexdecimal Code
-    const setHexadecimal = () => {
-        const str = '0123456789abcdf';
-        let i = 0;
-        let colors = '';
-
-        for(i; i < 6; i++){
-            let index = Math.floor(Math.random()*str.length)
-            colors += str[index]
-        }
-        return(`#${colors}`)
-        
-    }
-
+const Card = ({hexadecimalColor}) => {
     
+    const [copiedClass, setCopiedClass] = useState('copy')
+    const copy = useRef(null)
 
-    // Function to copy in clipboard
+    // Function to generate Hexdecimal Code
     const copyToClipboard = () => {
-        const va = copy.current.textContent
-        navigator.clipboard.writeText(va).then(() =>{
-            setCopied(true)
+        const copyTextContent = copy.current.textContent
+        console.log('copyTextContent', copyTextContent)
+        navigator.clipboard.writeText(copyTextContent).then(() =>{
             setCopiedClass('copied')
             const copiedClassMethod = setInterval(() =>{
                 setCopiedClass('copy')
             }, 3000)
-
         }, () => {
             alert('failed')
         })
     } 
+       
+
+    // Function to copy in clipboard
 
     return(
-        <CardContainer colors={setHexadecimal()}>
-            <Label ref={copy}>{setHexadecimal()}</Label>
-            <Icon onClick={copyToClipboard} copied = {copied} className={copiedClass}>
+        <CardContainer colors={hexadecimalColor}>
+            <Label ref={copy}>{hexadecimalColor}</Label>
+            <Icon onClick={copyToClipboard} className={copiedClass}>
                 <FontAwesomeIcon icon={faClipboard} />
             </Icon>
         </CardContainer>
