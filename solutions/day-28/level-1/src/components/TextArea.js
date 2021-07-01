@@ -1,11 +1,14 @@
 import React from 'react'
 
-const TextArea = () => {
+const TextArea = ({cancelEdit, tweet, edit}) => {
+    const onChangeTextArea = () => {
+        
+    }
     return(
         <div>
-            <textarea></textarea>
-            <button>Save</button>
-            <button>Cancel</button>
+            <textarea value={tweet}></textarea>
+            <button onClick={edit}>Save</button>
+            <button onClick={() => {cancelEdit()}}>Cancel</button>
         </div>
     )
 }

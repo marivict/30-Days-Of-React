@@ -1,18 +1,34 @@
-import React from 'react'
+import React,{useState} from 'react'
 import TextArea from './TextArea'
-const Layout = ({tweet, deleteMessage, editMessage, editField}) => {
+import TweetBox from './TweetBox'
+
+const Layout = ({
+    tweet, 
+    deleteMessage,
+    edit
+}) => {
+    const [editField, setEditField] = useState(false)
+
+    const editMessage = () => {
+        setEditField(true)
+    }
+
+    const cancelEdit = () => {
+        setEditField(false)
+    }
     return(
         <div>
-            {editField ? <TextArea /> : <p>{tweet}</p>}
-            
-            <button 
-                onClick={deleteMessage}
-            >Delete
-            </button>
-            <button 
-                onClick={editMessage}>
-                    Edit
-            </button>
+            {editField ? 
+            <TextArea
+                cancelEdit={cancelEdit}
+                tweet={tweet}
+                edit={edit}
+            /> : 
+            <TweetBox 
+            tweet={tweet} 
+            editMessage={editMessage} 
+            deleteMessage={deleteMessage} 
+            />}
         </div>
     )
 }

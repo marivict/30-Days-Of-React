@@ -27,7 +27,6 @@ const data = [
 const App = () => {
     const [tweets, setTweets] = useState(data[0].messages)
     const [newTweet, setNewTweet] = useState('')
-    const [editField, setEditField] = useState(false)
 
     const getMessage = (e) => { 
         setNewTweet(e.target.value)
@@ -59,18 +58,18 @@ const App = () => {
         setTweets(tweets.concat(newMessage))
     }
 
+    const edit = (message) => {
+        const lista = tweets
+        if(message.id === lista.id){
+            lista.tweet = message.tweet
+        }
+        setTweets(lista)
+    }
+
     const deleteMessage = (id) => {
         setTweets(tweets.filter(tweet => tweet.id !== id))
     }
 
-    const editMessage =(id) => {
-
-        const value = tweets.find(p => p.id === id)
-        if(value) {
-            console.log(value)
-        }
-        
-    }
 
     const getTweets = tweets.map(tweet => 
         <Layout 
@@ -78,10 +77,7 @@ const App = () => {
             deleteMessage={() => 
                 deleteMessage(tweet.id)
             } 
-            editMessage={() =>
-                editMessage(tweet.id)
-            }
-            editField={editField}
+            edit = { () => edit(tweet)}
         />)
 
     return(
