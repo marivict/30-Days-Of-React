@@ -5,7 +5,8 @@ import TweetBox from './TweetBox'
 const Layout = ({
     tweet, 
     deleteMessage,
-    edit
+    edit,
+    id
 }) => {
     const [editField, setEditField] = useState(false)
 
@@ -23,11 +24,13 @@ const Layout = ({
                 cancelEdit={cancelEdit}
                 tweet={tweet}
                 edit={edit}
+                id={id}
+                setEditField={setEditField}
             /> : 
             <TweetBox 
-            tweet={tweet} 
-            editMessage={editMessage} 
-            deleteMessage={deleteMessage} 
+                tweet={tweet} 
+                editMessage={editMessage} 
+                deleteMessage={deleteMessage} 
             />}
         </div>
     )

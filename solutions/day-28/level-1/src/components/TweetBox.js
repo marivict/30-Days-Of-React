@@ -1,6 +1,10 @@
 import React from 'react'
 
-const TweetBox = ({tweet, deleteMessage, editMessage}) =>{
+const TweetBox = ({
+    tweet, 
+    deleteMessage, 
+    editMessage, 
+}) => {
    
     return(
         <div>

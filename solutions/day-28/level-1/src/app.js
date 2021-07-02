@@ -58,13 +58,12 @@ const App = () => {
         setTweets(tweets.concat(newMessage))
     }
 
-    const edit = (message) => {
-        const lista = tweets
-        if(message.id === lista.id){
-            lista.tweet = message.tweet
-        }
-        setTweets(lista)
-    }
+    const edit = (id,setEditField, message) => {
+        const post = tweets.find((tweet) => tweet.id === id)
+        const changePost = {...post, tweet: message}
+        setTweets(tweets.map(tweet => tweet.id !== id ? post : changePost))
+        setEditField(false)
+     }
 
     const deleteMessage = (id) => {
         setTweets(tweets.filter(tweet => tweet.id !== id))
@@ -77,7 +76,9 @@ const App = () => {
             deleteMessage={() => 
                 deleteMessage(tweet.id)
             } 
-            edit = { () => edit(tweet)}
+            tweets = {tweets}
+            edit = {edit}
+            id={tweet.id}
         />)
 
     return(
