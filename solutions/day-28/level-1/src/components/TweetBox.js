@@ -7,16 +7,24 @@ const TweetBox = ({
 }) => {
    
     return(
-        <div>
-            <p>{tweet}</p>
-            <button 
-                onClick={()=>{editMessage()}}>
-                    Edit
-            </button>
-             <button 
-                onClick={deleteMessage}
-            >Delete
-            </button>
+        <div className="tweet-box">
+            <div className="tweet-box-header">
+
+            </div>
+            <div className="tweet-box-body">
+                <p>{tweet}</p>
+            </div>
+            <div className="tweet-box-footer">
+                <button 
+                    onClick={()=>{editMessage()}}>
+                        Edit
+                </button>
+                <button 
+                    onClick={deleteMessage}
+                >Delete
+                </button>
+            </div>
+            
         </div>
     )
 }

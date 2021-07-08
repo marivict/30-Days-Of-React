@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import Layout from './components/Layout'
+import Container from './components/Container'
+import './style/style.css'
 
 const data = [
     {   
@@ -28,15 +30,18 @@ const App = () => {
     const [tweets, setTweets] = useState(data[0].messages)
     const [newTweet, setNewTweet] = useState('')
 
-    const getMessage = (e) => { 
+    // Adding the onchange to input
+    const onchangeMessage = (e) => { 
         setNewTweet(e.target.value)
     }
 
+    // Generate id by the length of the object
     const idGenerator = () => {
         const id = tweets.length + 1
         return id
     }
 
+    // get the date by the format 'Jun 17, 2021 16:13 pm'
     const getDate = () => {
         const date = new Date()
         const dateFormat = date.toLocaleString('en-US', {
@@ -49,49 +54,51 @@ const App = () => {
     return dateFormat
     }
     
+    // Add the tweet from the form
     const addMessage = () => {
         const newMessage =  {
             id: idGenerator(),
             date:getDate(),
             tweet: newTweet
         }
+
         setTweets(tweets.concat(newMessage))
     }
 
-    const edit = (id,setEditField, message) => {
+    // edit the message
+    const edit = (id, setEditField, message) => {
         const post = tweets.find((tweet) => tweet.id === id)
         const changePost = {...post, tweet: message}
-        setTweets(tweets.map(tweet => tweet.id !== id ? post : changePost))
+        setTweets(tweets.map(tweet => tweet.id === id ? changePost : tweet))
         setEditField(false)
      }
 
+    //  delete message
     const deleteMessage = (id) => {
         setTweets(tweets.filter(tweet => tweet.id !== id))
     }
-
 
     const getTweets = tweets.map(tweet => 
         <Layout 
             tweet={tweet.tweet} 
             deleteMessage={() => 
-                deleteMessage(tweet.id)
-            } 
+                deleteMessage(tweet.id)} 
             tweets = {tweets}
             edit = {edit}
             id={tweet.id}
         />)
 
     return(
-        <div>
+        <div className="tweet-wrapper">
+            <Container>
             <input 
                 type = "text"
                 value = {newTweet}
-                onChange = {getMessage}
+                onChange = {onchangeMessage}
             />
             <button onClick={() =>addMessage()}>Click</button>
-
-            {getTweets}
-            
+                {getTweets}
+            </Container>
         </div>
     )
 }

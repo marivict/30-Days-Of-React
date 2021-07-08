@@ -18,7 +18,7 @@ const Layout = ({
         setEditField(false)
     }
     return(
-        <div>
+        <div className="post">
             {editField ? 
             <TextArea
                 cancelEdit={cancelEdit}

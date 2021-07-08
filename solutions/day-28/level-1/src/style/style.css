@@ -1,0 +1,20 @@
+.tweet-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* tweet-box */
+
+.tweet-box {
+    border: 1px solid #e0e0e0;
+    padding:10px 15px;
+}
